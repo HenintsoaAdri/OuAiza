@@ -42,4 +42,10 @@ public class NoteServlet extends HttpServlet {
 			}
 		}
 	}
+
+	@Override
+	protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setHeader("Access-Control-Allow-Origin", "*");
+		resp.setHeader("Access-Control-Allow-Headers", "Authorization");
+	}
 }

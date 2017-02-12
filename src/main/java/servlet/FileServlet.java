@@ -31,21 +31,21 @@ public class FileServlet extends HttpServlet {
 	    InputStream upload = null;
 		if(ServletFileUpload.isMultipartContent(request)){
 			try{
-				String path = request.getParameter("path");
-				String name = request.getParameter("nomFichier");
-				Part fichier = request.getPart("photo");
-				
-				String type = fichier.getContentType();
-				String extension = new MimeType(type).getSubType();
-				name+="."+extension;
-				File file = new File(Traitement.getImgUrl() + path + File.separator + name);
-				out.print(file.getAbsolutePath());
-				file.createNewFile();
-				output = new FileOutputStream(file, false);
-				upload = fichier.getInputStream();
-				int read = 0;
-				byte[] bytes = new byte[1024];
-				while ((read = upload.read(bytes)) != -1) {
+                            String path = request.getParameter("path");
+                            String name = request.getParameter("nomFichier");
+                            Part fichier = request.getPart("photo");
+
+                            String type = fichier.getContentType();
+                            String extension = new MimeType(type).getSubType();
+                            name+="."+extension;
+                            File file = new File(Traitement.getImgUrl() + path + File.separator + name);
+                            out.print(file.getAbsolutePath());
+                            file.createNewFile();
+                            output = new FileOutputStream(file, false);
+                            upload = fichier.getInputStream();
+                            int read = 0;
+                            byte[] bytes = new byte[1024];
+                            while ((read = upload.read(bytes)) != -1) {
 		            output.write(bytes, 0, read);
 		        }
 				switch(path){

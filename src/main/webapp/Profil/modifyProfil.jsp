@@ -95,16 +95,16 @@
 	<form action="/ProjetOuAiza/fileUpload" enctype="multipart/form-data" method="post">
     <div class="modal-content">
       <h4>Ajouter une Photo de profil</h4>
-		    <div class="file-field input-field">
-		      <div class="btn">
-		        <span>Photo</span>
-		        <input type="file" name="photo" id="photo">
-		      </div>
-		        <input type="hidden" name="nomFichier" value="<% out.print(p.getIdentifiant()+"-profil"); %>">
-		      <div class="file-path-wrapper">
-		        <input class="file-path validate" type="text">
-		      </div>
-		    </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Photo</span>
+            <input type="file" name="photo" id="photo">
+          </div>
+            <input type="hidden" name="nomFichier" value="<% out.print(p.getIdentifiant()+"-profil"); %>">
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
     </div>
     <div class="modal-footer">
       <button type="submit" name="path" value="imgProfil" class=" modal-action modal-close waves-effect waves-green btn-flat">Ajouter</button>
