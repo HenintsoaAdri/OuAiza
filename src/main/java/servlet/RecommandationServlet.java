@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Vector;
 
 import javax.activation.MimeType;
@@ -63,10 +65,10 @@ public class RecommandationServlet extends HttpServlet {
 		    InputStream upload = null;
 			if(ServletFileUpload.isMultipartContent(req)){
 				try{
-					String path = req.getParameter("path");
-					String name = req.getParameter("nomFichier");
+					String path = "recommandation";
+					String name = LocalDate.now() + req.getParameter("nomFichier") + p.getIdentifiant() + LocalTime.now().getNano();
 					Part fichier = req.getPart("imageRecommandation");
-					
+
 					String type = fichier.getContentType();
 					String extension = new MimeType(type).getSubType();
 					name+="."+extension;

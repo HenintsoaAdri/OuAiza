@@ -22,8 +22,8 @@ public class LieuDAO {
 	    	String req = "INSERT INTO HORAIRE(OUVERTURE, PAUSEDEBUT, PAUSEFIN, FERMETURE, JOUR)"
 	    			+ " VALUES(?,?,?,?,?)";
 	    	PreparedStatement horaire = con.prepareStatement(req);
-	    			req = "INSERT INTO LIEU (IDREGION, NOMLIEU, ADRESSELIEU, DESCRIPTIONLIEU, PRIXENTREELIEU, CONTACTLIEU, SITEWEBLIEU, MAILLIEU, LOGOLIEU) "
-	    			+ "VALUES (?,?,?,?,?,?,?,?,?)";
+	    			req = "INSERT INTO LIEU (IDREGION, NOMLIEU, ADRESSELIEU, LATITUDE, LONGITUDE, DESCRIPTIONLIEU, PRIXENTREELIEU, CONTACTLIEU, SITEWEBLIEU, MAILLIEU, LOGOLIEU) "
+	    			+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	    	PreparedStatement statement = con.prepareStatement(req);
 	    			req = "INSERT INTO HORAIRE_LIEU(IDHORAIRE,IDLIEU) VALUES(CURRVAL('horaire_idhoraire_seq'),CURRVAL('lieu_idlieu_seq'))";
 	    	Statement stmt = con.createStatement();
@@ -31,12 +31,14 @@ public class LieuDAO {
 			statement.setInt(1, model.getRegion().getId());
 			statement.setString(2, model.getNom());
 			statement.setString(3, model.getAdresse());
-			statement.setString(4, model.getDescription());
-			statement.setDouble(5, model.getPrixEntree());
-			statement.setString(6, model.getContact());
-			statement.setString(7, model.getSiteWeb());
-			statement.setString(8, model.getMail());
-			statement.setString(9, model.getLogo());
+                        statement.setFloat(4, model.getPosition()[0]);
+                        statement.setFloat(5, model.getPosition()[1]);
+			statement.setString(6, model.getDescription());
+			statement.setDouble(7, model.getPrixEntree());
+			statement.setString(8, model.getContact());
+			statement.setString(9, model.getSiteWeb());
+			statement.setString(10, model.getMail());
+			statement.setString(11, model.getLogo());
 			statement.execute();
 			for(DetailHoraire d : model.getHoraire().getAllHoraire()){
 				d.autoSetPause();

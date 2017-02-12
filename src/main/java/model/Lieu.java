@@ -15,6 +15,7 @@ public class Lieu {
 	String contact;
 	String siteWeb;
 	String mail;
+        float[] position;
 	Horaire horaire;
 	Etoile etoile;
 	Vector<Commentaire> commentaire = new Vector<Commentaire>();
@@ -40,6 +41,7 @@ public class Lieu {
 	}
 	public Lieu(int id, Region region, String nom, String adresse, String description, double prixEntree, String contact, String siteWeb, String mail, String logo, Etoile etoile) throws Exception {
 		super();
+        this.position = new float[]{0,0};
 		this.setId(id);
 		this.setRegion(region);
 		this.setNom(nom);
@@ -85,6 +87,17 @@ public class Lieu {
 		this.adresse = adresse;
 	}
 
+        public float[] getPosition() {
+            return position;
+        }
+
+        public void setPosition(float[] position) {
+            this.position = position;
+        }
+        public void setPosition(float latitude, float longitude){
+            setPosition(new float[]{latitude,longitude});
+        }
+        
 	public String getDescription() {
 		return description;
 	}

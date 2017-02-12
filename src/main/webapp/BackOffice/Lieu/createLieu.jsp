@@ -7,6 +7,8 @@
 try{
 	String nom = "";
 	String adresse = "";
+        String latitude = "";
+        String longitude = "";
 	String region = "";
 	String description = "";
 	String telephone = "";
@@ -16,6 +18,8 @@ try{
 		if(request.getParameter("add")!=null){
 			nom = request.getParameter("nomLieu");
 			adresse = request.getParameter("adresse");
+                        latitude = request.getParameter("latitude");
+                        longitude = request.getParameter("longitude");
 			region = request.getParameter("region");
 			description = request.getParameter("description");
 			telephone = request.getParameter("telephone");
@@ -298,8 +302,8 @@ try{
      <%
      	if(request.getParameter("add")!=null){
 	    	Horaire h = TraitementLieu.createHoraire(request);
-			TraitementLieu.insertLieu(region, nom, adresse, description, prix, telephone, site, email,h);
-		}
+		TraitementLieu.insertLieu(region, nom, adresse, latitude, longitude, description, prix, telephone, site, email,h);
+	}
      }
 		catch(Exception e){ %>
 		<div class="alert alert-warning">

@@ -84,6 +84,7 @@ public class Creation {
 				res.getString("MAILLIEU"),
 				res.getString("LOGOLIEU"),
 				creerEtoile(res));
+                model.setPosition(res.getFloat("LATITUDE"), res.getFloat("LONGITUDE"));
 		return model;
 	}
 	public static LieuRetire creerLieuRetire(ResultSet res) throws Exception{

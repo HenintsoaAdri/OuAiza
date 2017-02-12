@@ -1,6 +1,5 @@
 package traitement;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -45,13 +44,14 @@ public class TraitementLieu {
 		l.setMail(mail);
 		LieuDAO.insertLieu(l);
 	}
-	public static void insertLieu(String region, String nom, String adresse,String description, String prixEntree,
+	public static void insertLieu(String region, String nom, String adresse, String latitude, String longitude, String description, String prixEntree,
 			String contact, String siteWeb, String mail, Horaire horaire) throws Exception{
 		Region r = new Region();
 		r.setId(Integer.parseInt(region));
 		Lieu l = new Lieu();
 		l.setNom(nom);
 		l.setAdresse(adresse);
+                l.setPosition(Float.parseFloat(latitude),Float.parseFloat(longitude));
 		l.setDescription(description);
 		l.setPrixEntree(Double.parseDouble(prixEntree));
 		l.setContact(contact);
