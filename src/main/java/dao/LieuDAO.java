@@ -63,7 +63,7 @@ public class LieuDAO {
 			con.close();
 		}
 	}
-	public static void retireLieu(LieuRetire lieu) throws Exception{
+	public static void retirer(LieuRetire lieu) throws Exception{
 		Connection conn = UtilDB.getConnPostgre();
 		String insertTableSQL = "INSERT INTO LIEURETIRE(IDLIEU, IDADMINISTRATEUR, DATERETIRE, REMARQUE)"
 				+ " VALUES (?,?,CURRENT_DATE,?)";
@@ -72,6 +72,25 @@ public class LieuDAO {
 			statement.setInt(1, lieu.getId());
 			statement.setInt(2, lieu.getAdministrateur().getId());
 			statement.setString(3, lieu.getRemarque());
+			conn.commit();
+			
+		} catch (Exception e) {
+			conn.rollback();
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if(statement!=null){
+				statement.close();
+			}
+			conn.close();
+		}
+	}
+	public static void restaurer(LieuRetire lieu) throws Exception{
+		Connection conn = UtilDB.getConnPostgre();
+		String insertTableSQL = "DELETE LIEURETIRE WHERE IDLIEU = ?";
+		PreparedStatement statement = conn.prepareStatement(insertTableSQL);
+		try {
+			statement.setInt(1, lieu.getId());
 			conn.commit();
 			
 		} catch (Exception e) {
