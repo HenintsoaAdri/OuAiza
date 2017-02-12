@@ -3,8 +3,8 @@ package traitement;
 import javax.servlet.http.HttpServletRequest;
 
 public class Traitement {
-//	static String URL = "https://ou-aiza.herokuapp.com/";
-	static String URL = "http://localhost:8085/OuAiza/";
+	static String URL = "https://ou-aiza.herokuapp.com/";
+//	static String URL = "http://localhost:8085/OuAiza/";
 	static String internUrl = "/OuAiza/";
 	static String signature = "OuAizaAntsaAdri";
 	static String imgUrl = "/IMG-OuAiza/";
