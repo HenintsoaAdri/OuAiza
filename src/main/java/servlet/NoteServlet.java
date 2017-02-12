@@ -12,40 +12,45 @@ import model.Profil;
 import traitement.*;
 
 public class NoteServlet extends HttpServlet {
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setHeader("Access-Control-Allow-Origin", "*");
-		Profil p = (Profil)req.getSession().getAttribute("Profil");
-		PrintWriter out = resp.getWriter();
-		if(p != null){			
-			String idModel = req.getParameter("idModel");
-			int note = Integer.parseInt(req.getParameter("note"));
-			try{
-				switch(req.getParameter("type")){
-					case "evenement" :
-						TraitementEvenement.noter(note, idModel, p);
-						break;
-					case "organisateur":
-						TraitementOrganisateur.noter(note, idModel, p);
-						break;
-					case "lieu":
-						TraitementLieu.noter(note, idModel, p);
-						break;
-					case "recommandation":
-						TraitementRecommandation.noter(note, idModel, p);
-						break;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				out.print(e.getMessage());
-			}
-		}
-	}
-
-	@Override
-	protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setHeader("Access-Control-Allow-Origin", "*");
-		resp.setHeader("Access-Control-Allow-Headers", "Authorization");
-	}
+    
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        Profil p = (Profil) req.getSession().getAttribute("Profil");
+        try {            
+            p = TraitementProfil.checkToken(Traitement.extractToken(req));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        PrintWriter out = resp.getWriter();out.print(req.getHeader("Authorization"));
+        if (p != null) {            
+            String idModel = req.getParameter("idModel");
+            int note = Integer.parseInt(req.getParameter("note"));
+            try {
+                switch (req.getParameter("type")) {
+                    case "evenement":
+                        TraitementEvenement.noter(note, idModel, p);
+                        break;
+                    case "organisateur":
+                        TraitementOrganisateur.noter(note, idModel, p);
+                        break;
+                    case "lieu":
+                        TraitementLieu.noter(note, idModel, p);
+                        break;
+                    case "recommandation":
+                        TraitementRecommandation.noter(note, idModel, p);
+                        break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                out.print(e.getMessage());
+            }
+        }
+    }
+    
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Headers", "Authorization");
+    }
 }
