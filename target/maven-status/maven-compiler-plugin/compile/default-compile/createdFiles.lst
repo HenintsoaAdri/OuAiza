@@ -3,7 +3,6 @@ model\DetailHoraire.class
 servlet\LieuServlet.class
 servlet\LoginTokenServlet.class
 traitement\TraitementEvenement.class
-launch\Main.class
 servlet\RechercheServlet.class
 dao\CommentaireDAO.class
 servlet\ImgMenuServlet.class
@@ -43,6 +42,7 @@ model\Note.class
 model\Commentaire.class
 traitement\Traitement.class
 dao\Creation.class
+traitement\TraitementAdmin.class
 servlet\ImgOrganisateurServlet.class
 servlet\ProfilServlet.class
 model\Evenement.class
