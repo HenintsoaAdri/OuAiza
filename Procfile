@@ -1,1 +1,1 @@
-web: target/OuAiza-1.0-SNAPSHOT.war -Dhttp.port=${PORT} ${JAVA_OPTS} -DapplyEvolutions.default=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}
+web : java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
