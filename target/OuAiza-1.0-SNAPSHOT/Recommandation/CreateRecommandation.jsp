@@ -17,7 +17,7 @@
 			        	<a href="../Profil/Login.jsp" class="white-text">Connectez-vous pour pouvoir pouvoir poster une recommandation sur <% out.print(l.getNom()); %></a>
 			      	</div>
             	<%	}else{ %>
-	            <form class="col s12" enctype="multipart/form-data" action="<% out.print(Traitement.getInternUrl()); %>RecommandationServlet" method="post">
+	            <form class="col s12" enctype="multipart/form-data" action="<% out.print(Traitement.getInternUrl()); %>recommandationServlet" method="post">
 			      <div class="row">
 				    <div class="input-field">
 				      <textarea id="description" name="description" class="materialize-textarea"></textarea>

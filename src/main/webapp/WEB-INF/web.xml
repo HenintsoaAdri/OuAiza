@@ -25,7 +25,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>EvenementServlet</servlet-name>
-  	<url-pattern>/EvenementServlet</url-pattern>
+  	<url-pattern>/evenementServlet</url-pattern>
   </servlet-mapping>
   
       <servlet>
@@ -34,7 +34,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>LieuServlet</servlet-name>
-  	<url-pattern>/LieuServlet</url-pattern>
+  	<url-pattern>/lieuServlet</url-pattern>
   </servlet-mapping>
   
         <servlet>
@@ -42,7 +42,7 @@
   	<servlet-class>servlet.OrganisateurServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>OrganisateurServlet</servlet-name>
+  	<servlet-name>organisateurServlet</servlet-name>
   	<url-pattern>/OrganisateurServlet</url-pattern>
   </servlet-mapping>
   
@@ -52,7 +52,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>ProfilServlet</servlet-name>
-  	<url-pattern>/ProfilServlet</url-pattern>
+  	<url-pattern>/profilServlet</url-pattern>
   </servlet-mapping>
   
             <servlet>
@@ -61,7 +61,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>RecommandationServlet</servlet-name>
-  	<url-pattern>/RecommandationServlet</url-pattern>
+  	<url-pattern>/recommandationServlet</url-pattern>
   </servlet-mapping>
   
   <servlet>
