@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+% if(session.getAttribute("Admin")==null) sendRedirect("login.jsp");%>
 <!DOCTYPE html>
 <html>
   <head>

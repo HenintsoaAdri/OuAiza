@@ -15,7 +15,6 @@ import model.*;
 
 public class TraitementEvenement {
 	
-
 	public static void insertEvenement(Lieu lieu, Organisateur organisateur, String nom, 
 		    String dateEvenement,String dateFinEvenement, String description,
 		    String prixEntree, String condition, String autreInfo, String affiche) throws Exception{

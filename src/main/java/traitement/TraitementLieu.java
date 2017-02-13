@@ -11,10 +11,13 @@ import dao.CommentaireDAO;
 import dao.EtoileDAO;
 import dao.LieuDAO;
 import dao.RecommandationDAO;
+import java.time.LocalDate;
+import model.Administrateur;
 import model.Commentaire;
 import model.DetailHoraire;
 import model.Horaire;
 import model.Lieu;
+import model.LieuRetire;
 import model.Note;
 import model.Profil;
 import model.Recommandation;
@@ -166,5 +169,17 @@ public class TraitementLieu {
         }
         public static Vector<Lieu> recherche(String nomLieu) throws Exception{
             return LieuDAO.recherche(nomLieu);
+        }
+        public static void delete(int idlieu, Administrateur administrateur) throws Exception{
+            LieuRetire l = new LieuRetire();
+            l.setId(idlieu);
+            l.setAdministrateur(administrateur);
+            l.setDateRetire(LocalDate.now());
+            LieuDAO.retirer(l);
+        }
+        public static void delete(int idlieu) throws Exception{
+            LieuRetire l = new LieuRetire();
+            l.setId(idlieu);
+            LieuDAO.restaurer(l);
         }
 }
