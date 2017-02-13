@@ -60,6 +60,9 @@ public class RecommandationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		Profil p = (Profil)req.getSession().getAttribute("Profil");
+                try {
+                        p = TraitementProfil.checkToken(Traitement.extractToken(req));
+                } catch (Exception e) {e.printStackTrace();}
 		PrintWriter out = resp.getWriter();
                 String name = "default.jpg";
 		if(p != null){
