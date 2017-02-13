@@ -8,7 +8,7 @@ public class Traitement {
         static String internUrl = "/";
 //	static String internUrl = "/OuAiza/";
 	static String signature = "OuAizaAntsaAdri";
-	static String imgUrl = "https://www.dropbox.com/request/si4HMuu80s9003PZP5H9";
+	static String imgUrl = "https://www.dropbox.com/home/IMG-OuAiza/";
         static String mailUrl = "localhost";
         static String smtpUrl = "mail.smtp.host";
 	public static String getURL() {
