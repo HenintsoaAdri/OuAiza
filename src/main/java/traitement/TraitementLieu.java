@@ -164,4 +164,7 @@ public class TraitementLieu {
         public static Vector<Lieu> recherche(String nomLieu, int offset) throws Exception{
             return recherche(nomLieu,"", "", "", false, offset);
         }
+        public static Vector<Lieu> recherche(String nomLieu) throws Exception{
+            return LieuDAO.recherche(nomLieu);
+        }
 }

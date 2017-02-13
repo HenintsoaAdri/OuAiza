@@ -234,6 +234,24 @@ public class LieuDAO {
 				}
 				conn.close();
 			}
+	}public static Vector<Lieu> recherche(String nom) throws Exception {
+		Connection conn = UtilDB.getConnPostgre();
+		LocalDateTime now = LocalDateTime.now();
+		String query = "SELECT * FROM LISTLIEU L WHERE UPPER(L.NOMLIEU) LIKE ? ";
+		 PreparedStatement statement = conn.prepareStatement(query); 
+			try {
+				statement.setString(1, "%"+nom.toUpperCase()+"%");
+				return dbToLieu(statement.executeQuery());
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw e;
+			}finally {
+				if(statement!=null){
+					statement.close();
+				}
+				conn.close();
+			}
 	}
 	
 	public static void insertRegion(Region region) throws Exception {

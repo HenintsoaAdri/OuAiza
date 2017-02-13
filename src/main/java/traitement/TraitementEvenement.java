@@ -90,4 +90,7 @@ public class TraitementEvenement {
         public static Vector<Evenement> recherche(String nomEvenement, int offset) throws Exception{
             return recherche(nomEvenement,"", "", "", "", "", "", offset);
         }
+        public static Vector<Evenement> recherche(String nomEvenement) throws Exception{
+            return EvenementDAO.recherche(nomEvenement);
+        }
 }

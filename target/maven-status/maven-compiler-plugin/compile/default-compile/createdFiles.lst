@@ -3,6 +3,7 @@ model\DetailHoraire.class
 servlet\LieuServlet.class
 servlet\LoginTokenServlet.class
 traitement\TraitementEvenement.class
+servlet\RechercheServlet.class
 dao\CommentaireDAO.class
 servlet\ImgMenuServlet.class
 dao\RecommandationDAO.class

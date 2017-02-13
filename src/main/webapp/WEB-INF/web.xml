@@ -162,4 +162,13 @@
   	<servlet-name>ImageMenuServlet</servlet-name>
   	<url-pattern>/imgMenu/*</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>RechercheServlet</servlet-name>
+  	<servlet-class>servlet.RechercheServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RechercheServlet</servlet-name>
+  	<url-pattern>/rechercheMobile</url-pattern>
+  </servlet-mapping>
 </web-app>

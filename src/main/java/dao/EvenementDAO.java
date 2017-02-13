@@ -167,5 +167,24 @@ public class EvenementDAO {
 				conn.close();
 			}
 	}
+	public static Vector<Evenement> recherche(String nom) throws Exception {
+		Connection conn = UtilDB.getConnPostgre();
+		String query = "SELECT * FROM LISTEVENEMENT WHERE  UPPER(NOMEVENEMENT) "
+				+ "LIKE ? ";
+		 PreparedStatement statement = conn.prepareStatement(query); 
+			try {
+				statement.setString(1, nom);
+				return DBToEvenement(statement.executeQuery());
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw e;
+			}finally {
+				if(statement!=null){
+					statement.close();
+				}
+				conn.close();
+			}
+	}
 
 }

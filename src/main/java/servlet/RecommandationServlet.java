@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.activation.MimeType;
 import javax.servlet.ServletException;
@@ -59,56 +61,62 @@ public class RecommandationServlet extends HttpServlet {
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		Profil p = (Profil)req.getSession().getAttribute("Profil");
 		PrintWriter out = resp.getWriter();
+                String name = "default.jpg";
 		if(p != null){
-			
-		    FileOutputStream output = null;
-		    InputStream upload = null;
-			if(ServletFileUpload.isMultipartContent(req)){
-				try{
-					String path = "recommandation";
-					String name = LocalDate.now() + req.getParameter("nomFichier") + p.getIdentifiant() + LocalTime.now().getNano();
-					Part fichier = req.getPart("imageRecommandation");
-
-					String type = fichier.getContentType();
-					String extension = new MimeType(type).getSubType();
-					name+="."+extension;
-					String fullName = Traitement.getImgUrl() + path + File.separator + name;
-					File file = new File(fullName);
-					file.createNewFile();
-					output = new FileOutputStream(file, false);
-					upload = fichier.getInputStream();
-					int read = 0;
-					byte[] bytes = new byte[1024];
-					while ((read = upload.read(bytes)) != -1) {
-			            output.write(bytes, 0, read);
-			        }
-					if(path.compareTo("recommandation")==0){
-						String idLieu = req.getParameter("id");
-						String description = req.getParameter("description");
-						TraitementRecommandation.insert(idLieu, p, description, name);
-					}
-					resp.sendRedirect(Traitement.getInternUrl()+"Lieu/");
-				}catch(Exception e){
-						out.print("Fichier non t\u00e9l\u00e9charg\u00e9 !");
-						e.printStackTrace();
-				}finally{
-					out.close();
-					if(output != null){
-						output.close();
-					}
-					if(upload != null){
-						upload.close();
-					}
-				}
-			}
-			else{
-				try {
-					throw new Exception("Aucun fichier \u00e0 t\u00e9l\u00e9charger !");
-				} catch (Exception e) {
-					e.printStackTrace();
-					out.println(e);
-				}
-			}
+                    try{
+                        try{
+                            FileOutputStream output = null;
+                            InputStream upload = null;
+                            String path = "recommandation";
+                            name = LocalDate.now() + req.getParameter("nomFichier") + p.getIdentifiant() + LocalTime.now().getNano();
+                            if(ServletFileUpload.isMultipartContent(req)){
+                                try{
+                                    Part fichier = req.getPart("imageRecommandation");
+                                    
+                                    String type = fichier.getContentType();
+                                    String extension = new MimeType(type).getSubType();
+                                    name+="."+extension;
+                                    String fullName = Traitement.getImgUrl() + path + File.separator + name;
+                                    File file = new File(fullName);
+                                    file.createNewFile();
+                                    output = new FileOutputStream(file, false);
+                                    upload = fichier.getInputStream();
+                                    int read = 0;
+                                    byte[] bytes = new byte[1024];
+                                    while ((read = upload.read(bytes)) != -1) {
+                                        output.write(bytes, 0, read);
+                                    }
+                                }catch(Exception e){
+                                    out.print("Fichier non t\u00e9l\u00e9charg\u00e9 !");
+                                    e.printStackTrace();
+                                }finally{
+                                    out.close();
+                                    if(output != null){
+                                        output.close();
+                                    }
+                                    if(upload != null){
+                                        upload.close();
+                                    }
+                                }
+                            }
+                            else{
+                                try {
+                                    throw new Exception("Aucun fichier \u00e0 t\u00e9l\u00e9charger !");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    out.println(e);
+                                }
+                            }
+                        }catch(Exception e){
+                            
+                        }
+                        String idLieu = req.getParameter("id");
+                        String description = req.getParameter("description");
+                        TraitementRecommandation.insert(idLieu, p, description, name);
+                        resp.sendRedirect(Traitement.getInternUrl()+"Lieu/");
+                    }catch(Exception e){
+                        
+                    }
 		}
 	}
 
