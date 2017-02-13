@@ -74,7 +74,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>embeddedTomcatSample</finalName>
+    <finalName>OuAiza</finalName>
     <plugins>
         <plugin>
             <groupId>org.codehaus.mojo</groupId>
