@@ -1,4 +1,5 @@
 traitement\TraitementRecommandation.class
+launcher\Main.class
 model\DetailHoraire.class
 servlet\LieuServlet.class
 servlet\LoginTokenServlet.class
