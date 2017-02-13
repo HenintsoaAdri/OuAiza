@@ -35,68 +35,67 @@ public class RechercheServlet extends HttpServlet {
 			switch (typeRecherche) {
 			case "rechercheOffset":
 				
-							switch(type){
-							case "evenement" :
-								Vector<Evenement> vect = TraitementEvenement.recherche(recherche, 0);
-								JSONArray liste = new JSONArray();
-								for(int i=0; i<vect.size();i++){
-									liste.put(new JSONObject(vect.get(i)));
-								}
-								out.println(liste);
-								break;
-				//				case "organisateur":
-				//					TraitementOrganisateur.commenter(commentaire, idModel, dateHeure, p);
-				//					break;
-							case "lieu":
-								try {
-									Vector<Lieu> ltlieu = TraitementLieu.recherche(recherche, 0);
-										JSONArray listeLieu = new JSONArray();
-										for(int i=0; i<ltlieu.size();i++){
-											listeLieu.put(new JSONObject(ltlieu.get(i)));
-										}
-										out.println(listeLieu);
-								} catch (Exception e) {
-									e.printStackTrace();
-									out.print(e.getMessage());
-								}
-								break;
-				//				case "recommandation":
-				//					TraitementRecommandation.commenter(commentaire, idModel, dateHeure, p);
-				//					break;
+                        switch(type){
+                        case "evenement" :
+                                Vector<Evenement> vect = TraitementEvenement.recherche(recherche, 0);
+                                JSONArray liste = new JSONArray();
+                                for(int i=0; i<vect.size();i++){
+                                        liste.put(new JSONObject(vect.get(i)));
+                                }
+                                out.println(liste);
+                                break;
+//				case "organisateur":
+//					TraitementOrganisateur.commenter(commentaire, idModel, dateHeure, p);
+//					break;
+                        case "lieu":
+                                try {
+                                        Vector<Lieu> ltlieu = TraitementLieu.recherche(recherche, 0);
+                                                JSONArray listeLieu = new JSONArray();
+                                                for(int i=0; i<ltlieu.size();i++){
+                                                        listeLieu.put(new JSONObject(ltlieu.get(i)));
+                                                }
+                                                out.println(listeLieu);
+                                } catch (Exception e) {
+                                        e.printStackTrace();
+                                        out.print(e.getMessage());
+                                }
+                                break;
+//				case "recommandation":
+//					TraitementRecommandation.commenter(commentaire, idModel, dateHeure, p);
+//					break;
 						}
 				break;
 				
 			case "rechercheAll":
-				
-								switch(type){	
-								case "evenement" :
-									Vector<Evenement> vect = TraitementEvenement.recherche(recherche);
-									JSONArray liste = new JSONArray();
-									for(int i=0; i<vect.size();i++){
-										liste.put(new JSONObject(vect.get(i)));
-									}
-									out.println(liste);
-									break;
-				//				case "organisateur":
-				//					TraitementOrganisateur.commenter(commentaire, idModel, dateHeure, p);
-				//					break;
-								case "lieu":
-									try {
-										Vector<Lieu> ltlieu = TraitementLieu.recherche(recherche);
-											JSONArray listeLieu = new JSONArray();
-											for(int i=0; i<ltlieu.size();i++){
-												listeLieu.put(new JSONObject(ltlieu.get(i)));
-											}
-												out.println(listeLieu);
-									} catch (Exception e) {
-										e.printStackTrace();
-										out.print(e.getMessage());
-									}
-									break;
-				//				case "recommandation":
-				//					TraitementRecommandation.commenter(commentaire, idModel, dateHeure, p);
-				//					break;
-							}
+                            switch(type){	
+                            case "evenement" :
+                                    Vector<Evenement> vect = TraitementEvenement.recherche(recherche);
+                                    JSONArray liste = new JSONArray();
+                                    for(int i=0; i<vect.size();i++){
+                                            liste.put(new JSONObject(vect.get(i)));
+                                    }
+                                    out.println(liste);
+                                    break;
+//				case "organisateur":
+//					TraitementOrganisateur.commenter(commentaire, idModel, dateHeure, p);
+//					break;
+                            case "lieu":
+                                    try {
+                                            Vector<Lieu> ltlieu = TraitementLieu.recherche(recherche);
+                                                    JSONArray listeLieu = new JSONArray();
+                                                    for(int i=0; i<ltlieu.size();i++){
+                                                            listeLieu.put(new JSONObject(ltlieu.get(i)));
+                                                    }
+                                                            out.println(listeLieu);
+                                    } catch (Exception e) {
+                                            e.printStackTrace();
+                                            out.print(e.getMessage());
+                                    }
+                                    break;
+//				case "recommandation":
+//					TraitementRecommandation.commenter(commentaire, idModel, dateHeure, p);
+//					break;
+                        }
 				break;
 
 			default:
