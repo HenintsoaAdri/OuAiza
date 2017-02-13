@@ -42,8 +42,8 @@
   	<servlet-class>servlet.OrganisateurServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>organisateurServlet</servlet-name>
-  	<url-pattern>/OrganisateurServlet</url-pattern>
+  	<servlet-name>OrganisateurServlet</servlet-name>
+  	<url-pattern>/organisateurServlet</url-pattern>
   </servlet-mapping>
   
           <servlet>
