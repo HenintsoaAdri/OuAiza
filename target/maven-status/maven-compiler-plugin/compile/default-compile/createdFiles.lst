@@ -1,9 +1,9 @@
 traitement\TraitementRecommandation.class
-launcher\Main.class
 model\DetailHoraire.class
 servlet\LieuServlet.class
 servlet\LoginTokenServlet.class
 traitement\TraitementEvenement.class
+launch\Main.class
 servlet\RechercheServlet.class
 dao\CommentaireDAO.class
 servlet\ImgMenuServlet.class
