@@ -80,7 +80,7 @@
 			        	<a href="../Profil/Login.jsp" class="white-text">Connectez-vous pour pouvoir laisser un commentaire sur la recommandation de <% out.print(r.getProfil().getIdentifiant()); %> sur <% out.print(r.getLieu().getNom()); %></a>
 			      	</div>
             	<%	}else{ %>
-            		<div class="row">
+            		<div class="row card-panel">
 				      <form class="col s12" id="commentaireForm">
 				        <div class="row">
 				          <div class="input-field col s12">
