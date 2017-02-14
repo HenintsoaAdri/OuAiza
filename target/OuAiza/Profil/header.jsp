@@ -69,7 +69,8 @@
       </div>
       <% } %>
       </li>
-      <li><a class="waves-effect" href="../Lieu"><i class="material-icons">location_on</i> Lieu</a></li>
+      <li><a class="waves-effect" href="../Lieu"><i class="material-icons">place</i> Lieu</a></li>
+      <li><a class="waves-effect" href="../Recommandation"><i class="material-icons">share</i> Recommandations</a></li>
       <li><a class="waves-effect" href="../Evenement"><i class="material-icons">local_bar</i> &Eacute;v&eacute;nement</a></li>
       <li><a class="waves-effect" href="../Organisateur"><i class="material-icons">group</i> Organisateur</a></li>
       <li class="active"><a class="waves-effect" href="../Profil"><i class="material-icons">person</i> Mon Profil</a></li>
