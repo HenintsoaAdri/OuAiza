@@ -1,7 +1,5 @@
 <%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URI"%>
-<%@page import="jdk.nashorn.internal.runtime.URIUtils"%>
-<%@page import="org.apache.catalina.util.UriUtil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="traitement.*,utilitaire.*"%>
@@ -53,7 +51,7 @@
 	          		}
             	   else if(session.getAttribute("newAccount")!=null)out.print("Veuillez v&eacute;rifier votre boite email et confirmer la création de votre nouveau compte!");
             	   else{
-	          			throw new Exception("Vous vous trompez de chemin ! <a href = \"/ProjetOuAiza/\">C'est par ici</a>");
+	          			throw new Exception("Vous vous trompez de chemin ! <a href = \""+Traitement.getInternUrl()+"\">C'est par ici</a>");
 	          		}
 	              }catch(Exception e){ 
 	           		e.printStackTrace(); 
@@ -63,7 +61,9 @@
           </div>
         </div>
         <div class="col s6 right-align">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          O&ugrave; Aiza ? Le réseau qui réunit les malgaches aux festivit&eacute;s dans tout Madagascar.
+          Vous y retrouverez les &eacute;v&eacute;nements &agrave; ne pas rater, les lieux les plus pris&eacute;s mais aussi les recommandations des internautes, sans oublier les organisateurs du pays !
+          N'attendez plus, rejoignez nous au plus vite et poster vos recommandations !
         </div>
       </div>
     </div>

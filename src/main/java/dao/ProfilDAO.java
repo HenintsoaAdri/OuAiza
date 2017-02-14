@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
@@ -94,6 +95,11 @@ public class ProfilDAO {
 			TraitementProfil.sendMailConfirm(model.getEmail());
 			con.commit();
 		}
+                catch(SQLException exception){
+                    if(exception.getSQLState().compareTo("23505") == 0){
+				throw new Exception("Cet adresse email est d\u00e9j\u00e0 associ\u00e9 \u00e0 un compte O\u00f9 Aiza");
+			}else throw exception;
+                }
 		catch(Exception e){
 			con.rollback();
 			e.printStackTrace();

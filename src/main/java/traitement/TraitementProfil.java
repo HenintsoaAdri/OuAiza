@@ -109,7 +109,7 @@ public class TraitementProfil {
 	       msg.setFrom(new InternetAddress("nepasrepondre@ouaiza.com"));
 	       msg.setRecipient(Message.RecipientType.TO,
 	                          new InternetAddress(email));
-	       msg.setSubject("O� aiza - Veuillez confirmer votre compte");
+	       msg.setSubject("OO\u00f9 aiza - Veuillez confirmer votre compte");
 	       msg.setSentDate(Date.valueOf(LocalDate.now()));
 	       msg.setText("Nous vous remerions pour votre inscription \u00e0 notre r\u00e9seau O\u00f9 Aiza !\n"
 	       		+ "Veuillez cliquer sur le lien suivant pour confirmer la cr\u00e9ation de votre compte: \n"
