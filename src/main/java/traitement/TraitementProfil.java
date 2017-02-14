@@ -93,8 +93,17 @@ public class TraitementProfil {
 	public static void sendMailConfirm(String email) throws Exception{
             String lien = Traitement.getURL() + "Profil/Confirm.jsp?account=";
             Properties props = System.getProperties();
-	    props.put(Traitement.getSmtpUrl(), Traitement.getMailUrl());
-	    Session sess = Session.getInstance(props, null);
+	    props.put("mail.smtp.host", Traitement.getMailUrl());
+            props.put("mail.smtp.port", Traitement.getMailPort());
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            Authenticator auth = new Authenticator() {
+                @Override
+                public PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(Traitement.getMailUser(), Traitement.getMailPass());
+                }
+            };
+	    Session sess = Session.getInstance(props, auth);
 	    try {
 	       MimeMessage msg = new MimeMessage(sess);
 	       msg.setFrom(new InternetAddress("nepasrepondre@ouaiza.com"));

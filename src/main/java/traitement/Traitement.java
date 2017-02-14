@@ -9,8 +9,11 @@ public class Traitement {
 //	static String internUrl = "/OuAiza/";
 	static String signature = "OuAizaAntsaAdri";
 	static String imgUrl = "http://img-ouaiza.comli.com/IMG-OuAiza/";
-        static String mailUrl = "localhost";
-        static String smtpUrl = "mail.smtp.host";
+        static String mailUrl = "smtp.gmail.com";
+        static String mailUser = "ouaiza.no.reply@gmail.com";
+        static String mailPass = "Antsalol1";
+        static String mailPort = "587";
+        
 	public static String getURL() {
 		return URL;
 	}
@@ -26,9 +29,17 @@ public class Traitement {
         public static String getMailUrl() {
             return mailUrl;
         }
-        public static String getSmtpUrl() {
-            return smtpUrl;
+        public static String getMailPort() {
+            return mailPort;
         }
+        
+        public static String getMailUser() {
+            return mailUser;
+        }
+        public static String getMailPass() {
+            return mailPass;
+        }
+        
 	public static String extractToken(HttpServletRequest request)throws Exception{
 		String header = request.getHeader("Authorization");
 		if(header.startsWith("Bearer")){
