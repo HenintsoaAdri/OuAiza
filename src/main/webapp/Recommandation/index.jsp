@@ -5,7 +5,7 @@ try{
 	Vector<Recommandation> recommandation = TraitementRecommandation.getRecommandation(offset*10);
 %>
       <div class="row">
-        <div class="col s12 l8">
+        <div class="col s12">
           <div class="row">
            <% if(recommandation.isEmpty()){ %>
            	<div class="col s6">
@@ -15,7 +15,7 @@ try{
            	</div>
           	 <% } %>
           	
-		    <div class="col s6">
+            <div class="col s6">
              <div class="card">
                <div class="card-image">
                 <img src="../img/default.jpg">
