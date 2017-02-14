@@ -9,7 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
+
+  <servlet>
+  	<servlet-name>DataMobile</servlet-name>
+  	<servlet-class>servlet.Data</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DataMobile</servlet-name>
+  	<url-pattern>/Data</url-pattern>
+  </servlet-mapping>
   <servlet>
   	<servlet-name>Deconnexion</servlet-name>
   	<servlet-class>servlet.DeconnexionServlet</servlet-class>
