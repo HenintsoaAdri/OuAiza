@@ -51,7 +51,7 @@
 	          		}
             	   else if(session.getAttribute("newAccount")!=null)out.print("Veuillez v&eacute;rifier votre boite email et confirmer la création de votre nouveau compte!");
             	   else{
-	          			throw new Exception("Vous vous trompez de chemin ! <a href = \"/ProjetOuAiza/\">C'est par ici</a>");
+	          			throw new Exception("Vous vous trompez de chemin ! <a href = \""+Traitement.getInternUrl()+"\">C'est par ici</a>");
 	          		}
 	              }catch(Exception e){ 
 	           		e.printStackTrace(); 
