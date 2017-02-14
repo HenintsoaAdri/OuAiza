@@ -1,7 +1,5 @@
 <%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URI"%>
-<%@page import="jdk.nashorn.internal.runtime.URIUtils"%>
-<%@page import="org.apache.catalina.util.UriUtil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="traitement.*,utilitaire.*"%>
