@@ -16,7 +16,7 @@ public class ImgLieuServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String filename = "";
+		String filename = "default.jpg";
 		try{
 			filename = URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
         }
@@ -25,6 +25,7 @@ public class ImgLieuServlet extends HttpServlet{
         }
 	    File file = new File(Traitement.getImgUrl()+"imgLieu", filename);
         if (!file.exists()) file = new File(Traitement.getImgUrl(), "default.jpg");
+        System.out.print(Traitement.getImgUrl()+"default.jpg");
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + file.getName() + "\"");

@@ -16,7 +16,7 @@ public class ImgMenuServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String filename = "";
+		String filename = "default.jpg";
 		try{
 			filename = URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
         }
