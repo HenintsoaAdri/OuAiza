@@ -61,6 +61,7 @@ public class Recommandation {
 	}
 
 	public void setImage(String image) {
+            if(image.isEmpty()) image = "default.jpg";
 		this.image = image;
 	}
 

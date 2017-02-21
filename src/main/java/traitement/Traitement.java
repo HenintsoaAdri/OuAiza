@@ -8,7 +8,7 @@ public class Traitement {
         static String internUrl = "/";
 //	static String internUrl = "/OuAiza/";
 	static String signature = "OuAizaAntsaAdri";
-	static String imgUrl = "http://img-ouaiza.comli.com/IMG-OuAiza/";
+//	static String imgUrl = "http://img-ouaiza.comli.com/IMG-OuAiza/";
         static String mailUrl = "smtp.gmail.com";
         static String mailUser = "ouaiza.no.reply@gmail.com";
         static String mailPass = "Antsalol1";
@@ -23,9 +23,9 @@ public class Traitement {
 	public static String getInternUrl() {
 		return internUrl;
 	}
-	public static String getImgUrl() {
-		return imgUrl;
-	}
+//	public static String getImgUrl() {
+//		return imgUrl;
+//	}
         public static String getMailUrl() {
             return mailUrl;
         }

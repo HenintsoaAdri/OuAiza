@@ -13,31 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import traitement.Traitement;
+import traitement.TraitementFile;
 
 public class ImgProfilServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filename = "default.jpg";
 		try{
-			filename = "imgProfil/"+URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
+                    String filename = "default.jpg";
+                    try{
+                        filename = URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
+                    }
+                    catch(Exception e){}
+                    TraitementFile.showFile(response.getOutputStream(), "imgProfil", filename);
                 }
-                catch(Exception e){
-                        filename = "default.jpg";
+                catch(Exception ex){
+                    ex.printStackTrace();
+                }finally{
+                    response.getOutputStream().close();
                 }
-//	        File file = new File(Traitement.getImgUrl()+"imgProfil", filename);
-//	        if (!file.exists()) file = new File(Traitement.getImgUrl(), "default.jpg");
-//	        response.setHeader("Content-Type", getServletContext().getMimeType(filename));
-//	        response.setHeader("Content-Length", String.valueOf(file.length()));
-//	        response.setHeader("Content-Disposition", "inline; filename=\"" + file.getName() + "\"");
-//	        Files.copy(file.toPath(), response.getOutputStream());
-                InputStream input = new URL(Traitement.getImgUrl()+filename).openStream();
-                            int read = 0;
-                         byte[] bytes = new byte[1024];
-                        while ((read = input.read(bytes)) != -1) {
-		            response.getOutputStream().write(bytes, 0, read);
-		        } 
-	}
+        }
 	
 	
 }

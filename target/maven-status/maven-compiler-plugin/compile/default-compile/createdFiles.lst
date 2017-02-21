@@ -20,6 +20,7 @@ servlet\FileServlet.class
 servlet\NoteServlet.class
 servlet\ImgProfilServlet.class
 servlet\EvenementServlet.class
+traitement\TraitementFile.class
 dao\OrganisateurDAO.class
 servlet\Data.class
 servlet\DeconnexionServlet.class

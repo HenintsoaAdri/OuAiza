@@ -5,8 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.activation.MimeType;
+import javax.activation.MimeTypeParseException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +20,7 @@ import javax.servlet.http.Part;
 import model.Profil;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import traitement.Traitement;
+import traitement.TraitementFile;
 import traitement.TraitementProfil;
 
 @MultipartConfig(maxFileSize = 5000 * 1024)
@@ -25,46 +29,32 @@ public class FileServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setHeader("Access-Control-Allow-Origin", "*");
-		PrintWriter out = resp.getWriter();
-	    FileOutputStream output = null;
-	    InputStream upload = null;
+            resp.setHeader("Access-Control-Allow-Origin", "*");
+            PrintWriter out = resp.getWriter();
 		if(ServletFileUpload.isMultipartContent(request)){
 			try{
-                            String path = request.getParameter("path");
-                            String name = request.getParameter("nomFichier");
                             Part fichier = request.getPart("photo");
 
                             String type = fichier.getContentType();
                             String extension = new MimeType(type).getSubType();
-                            name+="."+extension;
-                            File file = new File(Traitement.getImgUrl() + path + File.separator + name);
-                            out.print(file.getAbsolutePath());
-                            file.createNewFile();
-                            output = new FileOutputStream(file, false);
-                            upload = fichier.getInputStream();
-                            int read = 0;
-                            byte[] bytes = new byte[1024];
-                            while ((read = upload.read(bytes)) != -1) {
-		            output.write(bytes, 0, read);
-		        }
-				switch(path){
-					case "imgProfil": 
-						Profil p = (Profil)request.getSession().getAttribute("Profil");
-						TraitementProfil.modifierPhoto(p, name);
-						resp.sendRedirect(Traitement.getInternUrl()+"Profil/");
-				}
+                            String name = request.getParameter("nomFichier") + "." + extension;
+                            
+                            String path = request.getParameter("path");
+                            InputStream input = fichier.getInputStream();
+                            TraitementFile.uploadFile(input, path, name);
+                            switch(path){
+                                    case "imgProfil": 
+                                            Profil p = (Profil)request.getSession().getAttribute("Profil");
+                                            TraitementProfil.modifierPhoto(p, name);
+                                            resp.sendRedirect(Traitement.getInternUrl()+"Profil/");
+                                            break;
+                                    
+                            }
 			}catch(Exception e){
 					out.print("Fichier non t\u00e9l\u00e9charg\u00e9 !");
 					e.printStackTrace();
 			}finally{
-				out.close();
-				if(output != null){
-					output.close();
-				}
-				if(upload != null){
-					upload.close();
-				}
+                            out.close();
 			}
 		}
 		else{
@@ -73,6 +63,8 @@ public class FileServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				out.println(e);
+			} finally{
+                            out.close();
 			}
 		}
 	}
