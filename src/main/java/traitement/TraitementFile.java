@@ -12,18 +12,19 @@ public class TraitementFile {
     static String defaut = "/public_html/IMG-OuAiza/default.jpg";
     static String globalPath = "/public_html/IMG-OuAiza/";
     static FTPClient ftp = null;
-    public static FTPClient connexionFtp() throws Exception{
-        FTPClient ftp = new FTPClient();
+    public static void connexionFtp() throws Exception{
         try {
-            ftp.connect(server, 21);
-            if (!FTPReply.isPositiveCompletion(ftp.getReplyCode())) {
-                ftp.disconnect();
-                throw new Exception("Exception in connecting to FTP Server");
+            if(ftp == null){
+                ftp = new FTPClient();
+                ftp.connect(server, 21);
+                if (!FTPReply.isPositiveCompletion(ftp.getReplyCode())) {
+                    ftp.disconnect();
+                    throw new Exception("Exception in connecting to FTP Server");
+                }
+                ftp.login(user, pass);
+                ftp.enterLocalPassiveMode();
+                ftp.setFileType(FTP.BINARY_FILE_TYPE);
             }
-            ftp.login(user, pass);
-            ftp.enterLocalPassiveMode();
-            ftp.setFileType(FTP.BINARY_FILE_TYPE);
-            return ftp;
         }catch(IOException e){
             e.printStackTrace();
             throw e;
@@ -31,7 +32,7 @@ public class TraitementFile {
     }
     public static void showFile(OutputStream output, String dossier, String nomFichier) throws Exception{
         String file = globalPath + dossier + nomFichier;
-        ftp = connexionFtp();
+        connexionFtp();
         if(!ftp.retrieveFile(file, output)){
             ftp.retrieveFile(defaut, output);
         }
@@ -39,7 +40,7 @@ public class TraitementFile {
     public static void uploadFile(InputStream input, String dossier, String nomFichier ) throws Exception{
         try{
             String file = globalPath + dossier + nomFichier;
-            ftp = connexionFtp();
+            connexionFtp();
             ftp.storeUniqueFile(file, input);
         } catch(Exception e){
             e.printStackTrace();
