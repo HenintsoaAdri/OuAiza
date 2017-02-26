@@ -234,7 +234,6 @@ public class LieuDAO {
 			}
 	}public static Vector<Lieu> recherche(String nom) throws Exception {
 		Connection conn = UtilDB.getConnPostgre();
-		LocalDateTime now = LocalDateTime.now();
 		String query = "SELECT * FROM LISTLIEU L WHERE UPPER(L.NOMLIEU) LIKE ? ";
 		 PreparedStatement statement = conn.prepareStatement(query); 
 			try {
